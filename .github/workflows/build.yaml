@@ -54,25 +54,25 @@ jobs:
         with:
           images: ghcr.io/explodingcamera/pleroma
 
-      - name: Build and push (develop)
-        if: startsWith(matrix.version, 'develop')
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          platforms: linux/arm64
-          build-args: |
-            PLEROMA_VERSION=${{ matrix.version }}
-          context: .
-          file: ./Dockerfile
-          tags: |
-            ghcr.io/explodingcamera/pleroma:develop
+      # - name: Build and push (develop)
+      #   if: startsWith(matrix.version, 'develop')
+      #   uses: docker/build-push-action@v3
+      #   with:
+      #     push: true
+      #     platforms: linux/arm64
+      #     build-args: |
+      #       PLEROMA_VERSION=${{ matrix.version }}
+      #     context: .
+      #     file: ./Dockerfile
+      #     tags: |
+      #       ghcr.io/explodingcamera/pleroma:develop
 
       - name: Build and push (stable)
         if: startsWith(matrix.version, 'stable')
         uses: docker/build-push-action@v3
         with:
           push: true
-          platforms: linux/arm64
+          platforms: linux/amd64
           build-args: |
             PLEROMA_VERSION=${{ matrix.version }}
           context: .
