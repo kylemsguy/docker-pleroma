@@ -1,8 +1,8 @@
 name: ci
 
 on:
-  schedule:
-    - cron: 30 12 * * 1
+#   schedule:
+#     - cron: 30 12 * * 1
   push:
     paths:
       - Dockerfile
@@ -59,7 +59,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/arm64
           build-args: |
             PLEROMA_VERSION=${{ matrix.version }}
           context: .
@@ -72,7 +72,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/arm64
           build-args: |
             PLEROMA_VERSION=${{ matrix.version }}
           context: .
